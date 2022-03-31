@@ -24,8 +24,10 @@ import { useSnackbar } from 'notistack';
 import { useContext } from 'react';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
+import { useRouter } from 'next/router';
 
 function CartScreen() {
+    const router = useRouter();
     const {
         state: {
             cart: { cartItems },
@@ -136,7 +138,14 @@ function CartScreen() {
                                     <Typography variant="h2">Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '} items) : {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}€</Typography>
                                 </ListItem>
                                 <ListItem>
-                                    <Button fullWidth color="primary" variant="contained">Finalizar Reserva</Button>
+                                    <Button
+                                        onClick={() => {
+                                            router.push('/payment');
+                                        }}
+                                        fullWidth
+                                        color="primary"
+                                        variant="contained"
+                                    >Finalizar Reserva</Button>
                                 </ListItem>
                             </List>
                         </Card>
