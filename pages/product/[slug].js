@@ -118,7 +118,7 @@ export default function ProductScreen(props) {
                                             Peça: {product.category}
                                         </ListItem>
                                         <ListItem>
-                                            Ainda disponíveis {product.countInStock} bilhetes
+                                            <Typography>{product.countInStock > 0 ? 'Ainda há bilhetes disponíveis' : 'Já não há bilhetes disponíveis'}</Typography>
                                         </ListItem>
                                         <ListItem>
                                             <Typography>

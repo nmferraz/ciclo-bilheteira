@@ -23,9 +23,7 @@ export default function ProductItem({ product, addToCartHandler }) {
           ></CardMedia>
           <CardContent>
             <Typography>{product.name}</Typography>
-            <Typography>
-              Ainda disponíveis {product.countInStock} bilhetes
-            </Typography>
+            <Typography>{product.countInStock > 0 ? 'Ainda há bilhetes disponíveis' : 'Já não há bilhetes disponíveis'}</Typography>
           </CardContent>
         </CardActionArea>
       </NextLink>
