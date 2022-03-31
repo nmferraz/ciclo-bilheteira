@@ -8,7 +8,6 @@ import {
     RadioGroup,
     Typography,
 } from '@mui/material';
-import Cookies from 'js-cookie';
 import jsCookie from 'js-cookie';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
