@@ -28,8 +28,13 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import classes from '../utils/classes';
+import { useContext } from 'react';
+import { Store } from '../utils/Store';
+import jsCookie from 'js-cookie';
 
 export default function Layout({ title, description, children }) {
+    const { state, dispatch } = useContext(Store);
+    const { darkMode, cart, userInfo } = state;
     const theme = createTheme({
         components: {
             MuiLink: {
@@ -51,7 +56,7 @@ export default function Layout({ title, description, children }) {
             },
         },
         palette: {
-            mode: 'light',
+            mode: darkMode ? 'dark' : 'light',
             primary: {
                 main: '#f0c000',
             },
@@ -59,7 +64,12 @@ export default function Layout({ title, description, children }) {
                 main: '#208080',
             },
         },
-    })
+    });
+    const darkModeChangeHandler = () => {
+        dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' });
+        const newDarkMode = !darkMode;
+        jsCookie.set('darkMode', newDarkMode ? 'ON' : 'OFF');
+    };
     return (
         <>
             <Head>
@@ -70,18 +80,48 @@ export default function Layout({ title, description, children }) {
                 <CssBaseline />
                 <AppBar position="static" sx={classes.appbar}>
                     <Toolbar sx={classes.toolbar}>
-                        <NextLink href="/" passHref>
-                            <Link>
-                                <Typography sx={classes.brand}>CICLO</Typography>
-                            </Link>
-                        </NextLink>
+                        <Box display="flex" alignItems="center">
+                            <NextLink href="/" passHref>
+                                <Link>
+                                    <Typography sx={classes.brand}>CICLO</Typography>
+                                </Link>
+                            </NextLink>
+                        </Box>
+                        <Box>
+                            <Switch checked={darkMode} onChange={darkModeChangeHandler}></Switch>
+                            <NextLink href="/cart" passHref>
+                                <Link>
+                                    <Typography component="span">
+                                        {cart.cartItems.length > 0 ? (
+                                            <Badge
+                                                color="secondary"
+                                                badgeContent={cart.cartItems.length}
+                                            >
+                                                Carrinho
+                                            </Badge>
+                                        ) : (
+                                            'Cart'
+                                        )}
+                                    </Typography>
+                                </Link>
+                            </NextLink>
+                            {userInfo ? (
+                                <NextLink href="/profile" passHref>
+                                    <Link>{userInfo.name}</Link>
+                                </NextLink>
+                            ) : (
+                                <NextLink href="/login" passHref>
+                                    <Link>Iniciar Sessão</Link>
+                                </NextLink>
+                            )}
+                        </Box>
                     </Toolbar>
                 </AppBar>
                 <Container component="main" sx={classes.main}>
                     {children}
                 </Container>
                 <Box component="footer" sx={classes.footer}>
-                    <Typography>CICLO - Escola de Teatro da Retorta <br /> Alpha version - Desenvolvido por Nuno Miguel Ferraz</Typography>
+                    <Typography>Beta Version - Desenvolvido por Nuno Miguel Ferraz</Typography>
                 </Box>
             </ThemeProvider>
         </>
