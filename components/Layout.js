@@ -21,13 +21,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import classes from '../utils/classes';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Store } from '../utils/Store';
 import jsCookie from 'js-cookie';
 import { useRouter } from 'next/router';
-import axios from 'axios';
-import { useSnackbar } from 'notistack';
-import { getError } from '../utils/error';
 
 export default function Layout({ title, description, children }) {
     const router = useRouter();
@@ -69,7 +66,7 @@ export default function Layout({ title, description, children }) {
         jsCookie.set('darkMode', newDarkMode ? 'ON' : 'OFF');
     };
     const [anchorEl, setAnchorEl] = useState(null);
-    const loginMenuCloseHandler = (e, redirect) => {
+    const loginMenuCloseHandler = (redirect) => {
         setAnchorEl(null);
         if (redirect) {
             router.push(redirect);
@@ -86,28 +83,6 @@ export default function Layout({ title, description, children }) {
         jsCookie.remove('paymentMethod');
         router.push('/');
     };
-
-    const [sidbarVisible, setSidebarVisible] = useState(false);
-    const sidebarOpenHandler = () => {
-        setSidebarVisible(true);
-    };
-    const sidebarCloseHandler = () => {
-        setSidebarVisible(false);
-    };
-
-    const { enqueueSnackbar } = useSnackbar();
-    const [categories, setCategories] = useState([]);
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const { data } = await axios.get(`/api/products/categories`);
-                setCategories(data);
-            } catch (err) {
-                enqueueSnackbar(getError(err), { variant: 'error' });
-            }
-        };
-        fetchCategories();
-    }, [enqueueSnackbar]);
 
     const isDesktop = useMediaQuery('(min-width:600px)');
 
