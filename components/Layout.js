@@ -6,14 +6,9 @@ import {
     Button,
     Container,
     CssBaseline,
-    Divider,
-    Drawer,
     IconButton,
     InputBase,
     Link,
-    List,
-    ListItem,
-    ListItemText,
     Menu,
     MenuItem,
     Switch,
@@ -22,9 +17,7 @@ import {
     Typography,
     useMediaQuery,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import CancelIcon from '@mui/icons-material/Cancel';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import classes from '../utils/classes';
@@ -138,59 +131,12 @@ export default function Layout({ title, description, children }) {
                 <AppBar position="static" sx={classes.appbar}>
                     <Toolbar sx={classes.toolbar}>
                         <Box display="flex" alignItems="center">
-                            <IconButton
-                                edge="start"
-                                aria-label="open drawer"
-                                onClick={sidebarOpenHandler}
-                                sx={classes.menuButton}
-                            >
-                                <MenuIcon sx={classes.navbarButton} />
-                            </IconButton>
                             <NextLink href="/" passHref>
                                 <Link>
                                     <Typography sx={classes.brand}>CICLO</Typography>
                                 </Link>
                             </NextLink>
                         </Box>
-                        <Drawer
-                            anchor="left"
-                            open={sidbarVisible}
-                            onClose={sidebarCloseHandler}
-                        >
-                            <List>
-                                <ListItem>
-                                    <Box
-                                        display="flex"
-                                        alignItems="center"
-                                        justifyContent="space-between"
-                                    >
-                                        <Typography>Espetáculos por título</Typography>
-                                        <IconButton
-                                            aria-label="close"
-                                            onClick={sidebarCloseHandler}
-                                        >
-                                            <CancelIcon />
-                                        </IconButton>
-                                    </Box>
-                                </ListItem>
-                                <Divider light />
-                                {categories.map((category) => (
-                                    <NextLink
-                                        key={category}
-                                        href={`/search?category=${category}`}
-                                        passHref
-                                    >
-                                        <ListItem
-                                            button
-                                            component="a"
-                                            onClick={sidebarCloseHandler}
-                                        >
-                                            <ListItemText primary={category}></ListItemText>
-                                        </ListItem>
-                                    </NextLink>
-                                ))}
-                            </List>
-                        </Drawer>
                         <Box sx={isDesktop ? classes.visible : classes.hidden}>
                             <form onSubmit={submitHandler}>
                                 <Box sx={classes.searchForm}>
