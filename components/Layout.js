@@ -53,10 +53,10 @@ export default function Layout({ title, description, children }) {
         palette: {
             mode: darkMode ? 'dark' : 'light',
             primary: {
-                main: '#f0c000',
+                main: '#929192',
             },
             secondary: {
-                main: '#208080',
+                main: '#ebe8e3',
             },
         },
     });
@@ -66,7 +66,7 @@ export default function Layout({ title, description, children }) {
         jsCookie.set('darkMode', newDarkMode ? 'ON' : 'OFF');
     };
     const [anchorEl, setAnchorEl] = useState(null);
-    const loginMenuCloseHandler = (redirect) => {
+    const loginMenuCloseHandler = (_e, redirect) => {
         setAnchorEl(null);
         if (redirect) {
             router.push(redirect);

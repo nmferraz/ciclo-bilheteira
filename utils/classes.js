@@ -15,7 +15,7 @@ const classes = {
         textAlign: 'center',
     },
     appbar: {
-        backgroundColor: '#203040',
+        backgroundColor: '#3d3939',
         '& a': {
             color: '#ffffff',
             marginLeft: 1,
@@ -55,11 +55,11 @@ const classes = {
         paddingLeft: 1,
         color: '#000000',
         '& ::placeholder': {
-            color: '#606060',
+            color: '#929192',
         },
     },
-    searchButton: {
-        backgroundColor: '#f8c040',
+    searchButton: { 
+        backgroundColor: '#929192',
         padding: 1,
         borderRadius: '0 5px 5px 0',
         '& span': {
