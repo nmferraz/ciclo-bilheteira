@@ -24,10 +24,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 <br />
 
-## Features
-
-<br />
-
 ## Deploy on Vercel
 
 Check the [live project](https://ciclo-bilheteira.vercel.app/).
