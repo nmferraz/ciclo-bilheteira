@@ -17,7 +17,6 @@ import classes from '../../utils/classes';
 import client from '../../utils/client';
 import { urlFor, urlForThumbnail } from '../../utils/image';
 import { Store } from '../../utils/Store';
-import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router';
