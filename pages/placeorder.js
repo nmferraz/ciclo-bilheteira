@@ -99,13 +99,6 @@ function PlaceOrderScreen() {
                             <ListItem>
                                 {paymentMethod}
                             </ListItem>
-                            <ListItem>
-                                <Button
-                                    onClick={() => router.push('/payment')}
-                                >
-                                    Editar
-                                </Button>
-                            </ListItem>
                         </List>
                     </Card>
                     <Card sx={classes.section}>

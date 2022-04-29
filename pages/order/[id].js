@@ -1,6 +1,5 @@
 import {
     Alert,
-    Box,
     Card,
     CircularProgress,
     Grid,
@@ -19,14 +18,12 @@ import NextLink from 'next/link';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React, { useContext, useEffect, useReducer } from 'react';
-import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import Layout from '../../components/Layout';
 import classes from '../../utils/classes';
 import { Store } from '../../utils/Store';
 import { useRouter } from 'next/router';
 import { getError } from '../../utils/error';
 import axios from 'axios';
-import { useSnackbar } from 'notistack';
 
 function reducer(state, action) {
     switch (action.type) {
@@ -48,7 +45,6 @@ function reducer(state, action) {
 }
 
 function OrderScreen({ params }) {
-    const { enqueueSnackbar } = useSnackbar();
     const { id: orderId } = params;
     const [{ loading, error, order, successPay }, dispatch] = useReducer(
         reducer,
@@ -71,7 +67,6 @@ function OrderScreen({ params }) {
     const router = useRouter();
     const { state } = useContext(Store);
     const { userInfo } = state;
-    const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
     useEffect(() => {
         if (!userInfo) {
@@ -94,59 +89,8 @@ function OrderScreen({ params }) {
             if (successPay) {
                 dispatch({ type: 'PAY_RESET' });
             }
-        } else {
-            const loadPaypalScript = async () => {
-                const { data: clientId } = await axios.get('/api/keys/paypal', {
-                    headers: { authorization: `Bearer ${userInfo.token}` },
-                });
-                paypalDispatch({
-                    type: 'resetOptions',
-                    value: {
-                        'client-id': clientId,
-                        currency: 'EUR',
-                    },
-                });
-                paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
-            }
-            loadPaypalScript();
         }
-    }, [order, orderId, successPay, paypalDispatch, router, userInfo]);
-
-    function createOrder(data, actions) {
-        return actions.order
-            .create({
-                purchase_units: [
-                    {
-                        amount: { value: totalPrice },
-                    },
-                ],
-            })
-            .then((orderID) => {
-                return orderID;
-            });
-    }
-    function onApprove(data, actions) {
-        return actions.order.capture().then(async function (details) {
-            try {
-                dispatch({ type: 'PAY_REQUEST' });
-                const { data } = await axios.put(
-                    `/api/orders/${order._id}/pay`,
-                    details,
-                    {
-                        headers: { authorization: `Bearer ${userInfo.token}` },
-                    }
-                );
-                dispatch({ type: 'PAY_SUCCESS', payload: data });
-                enqueueSnackbar('Reserva paga', { variant: 'success' });
-            } catch (err) {
-                dispatch({ type: 'PAY_FAIL', payload: getError(err) });
-                enqueueSnackbar(getError(err), { variant: 'error' });
-            }
-        });
-    }
-    function onError(err) {
-        enqueueSnackbar(getError(err), { variant: 'error' });
-    }
+    }, [order, orderId, successPay, router, userInfo]);
 
     return (
         <Layout title={`Reserva ${orderId} | CICLO`}>
@@ -258,21 +202,6 @@ function OrderScreen({ params }) {
                                         </Grid>
                                     </Grid>
                                 </ListItem>
-                                {!isPaid && (
-                                    <ListItem>
-                                        {isPending ? (
-                                            <CircularProgress />
-                                        ) : (
-                                            <Box sx={classes.fullWidth}>
-                                                <PayPalButtons
-                                                    createOrder={createOrder}
-                                                    onApprove={onApprove}
-                                                    onError={onError}
-                                                ></PayPalButtons>
-                                            </Box>
-                                        )}
-                                    </ListItem>
-                                )}
                             </List>
                         </Card>
                     </Grid>
