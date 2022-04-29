@@ -147,7 +147,7 @@ export default function Layout({ title, description, children }) {
                                             'Cart'
                                         )}
                                     </Typography>
-                                </Link>
+                                </Link> 
                             </NextLink>
                             {userInfo ? (
                                 <>
