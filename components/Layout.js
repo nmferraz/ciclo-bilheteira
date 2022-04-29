@@ -193,7 +193,7 @@ export default function Layout({ title, description, children }) {
                     {children}
                 </Container>
                 <Box component="footer" sx={classes.footer}>
-                    <Typography>Beta Version - Desenvolvido por Nuno Miguel Ferraz</Typography>
+                    <Typography>Escola de Teatro da Retorta | Desenvolvido por Nuno Miguel Ferraz</Typography>
                 </Box>
             </ThemeProvider>
         </>
