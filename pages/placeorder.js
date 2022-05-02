@@ -95,7 +95,7 @@ function PlaceOrderScreen() {
           <Card sx={classes.section}>
             <List>
                 <ListItem>
-                  <Typography component="p" variant="p" color="yellow">
+                  <Typography component="p" variant="p" color="red">
                     <strong>
                       Informamos, que por motivos de logística, se tiver
                       bilhetes para mais de um dia terá que pagar tudo no

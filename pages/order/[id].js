@@ -124,7 +124,7 @@ function OrderScreen({ params }) {
             <Card sx={classes.section}>
               <List>
                 <ListItem>
-                  <Typography component="p" variant="p" color="yellow">
+                  <Typography component="p" variant="p" color="red">
                     <strong>
                       Se pretender cancelar, efetuar alguma alteração na sua reserva, ou apenas obter alguma informação ligue para (inserir nº).
                     </strong>
