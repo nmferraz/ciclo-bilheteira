@@ -94,6 +94,21 @@ function PlaceOrderScreen() {
         <Grid item md={9} xs={12}>
           <Card sx={classes.section}>
             <List>
+                <ListItem>
+                  <Typography component="p" variant="p" color="yellow">
+                    <strong>
+                      Informamos, que por motivos de logística, se tiver
+                      bilhetes para mais de um dia terá que pagar tudo no
+                      primeiro dia em que aparecer. Se não pretender pagar tudo
+                      numa única vez, retroceda e crie uma reserva para cada um
+                      dos dias.
+                    </strong>
+                  </Typography>
+                </ListItem>
+            </List>
+          </Card>
+          <Card sx={classes.section}>
+            <List>
               <ListItem>
                 <Typography variant="h2" component="h2">
                   Metódo de Pagamento

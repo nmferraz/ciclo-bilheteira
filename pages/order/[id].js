@@ -101,13 +101,34 @@ function OrderScreen({ params }) {
             <Card sx={classes.section}>
               <List>
                 <ListItem>
-                  <Typography component="h2" variant="h2">
-                    Método de Pagamento
+                  <Typography component="h2" color="green" variant="h2">
+                    Reserva efetuada com sucesso!
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography component="p" variant="p">
+                    <strong>
+                      Na entrada apenas terá que dar o nome ou email com que
+                      criou a conta nesta plataforma. Informamos também, que por
+                      motivos de logística, se tiver bilhetes para mais de um
+                      dia terá que pagar tudo no primeiro dia em que aparecer.
+                    </strong>
                   </Typography>
                 </ListItem>
                 <ListItem>{paymentMethod}</ListItem>
                 <ListItem>
                   Status: {isPaid ? `pago a ${paidAt}` : "ainda não está pago"}
+                </ListItem>
+              </List>
+            </Card>
+            <Card sx={classes.section}>
+              <List>
+                <ListItem>
+                  <Typography component="p" variant="p" color="yellow">
+                    <strong>
+                      Se pretender cancelar, efetuar alguma alteração na sua reserva, ou apenas obter alguma informação ligue para (inserir nº).
+                    </strong>
+                  </Typography>
                 </ListItem>
               </List>
             </Card>
