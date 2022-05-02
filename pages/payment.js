@@ -61,7 +61,7 @@ export default function PaymentScreen() {
                                 onChange={(e) => setPaymentMethod(e.target.value)}
                             >
                                 {/*<FormControlLabel value="PayPal" label="PayPal ou Cartão de débito/crédito" control={<Radio />}></FormControlLabel>*/}
-                                <FormControlLabel value="Cash" label="Pagar no local" control={<Radio />}></FormControlLabel>
+                                <FormControlLabel value="Irá pagar no local" label="Pagar no local" control={<Radio />}></FormControlLabel>
                             </RadioGroup>
                         </FormControl>
                     </ListItem>
