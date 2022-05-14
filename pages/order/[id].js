@@ -126,7 +126,7 @@ function OrderScreen({ params }) {
                 <ListItem>
                   <Typography component="p" variant="p" color="red">
                     <strong>
-                      Se pretender cancelar, efetuar alguma alteração na sua reserva, ou apenas obter alguma informação ligue para 931809627.
+                      Se pretender cancelar, efetuar alguma alteração na sua reserva, ou apenas obter alguma informação ligue para 931809727.
                     </strong>
                   </Typography>
                 </ListItem>
