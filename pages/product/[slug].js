@@ -115,11 +115,11 @@ export default function ProductScreen(props) {
                                         <ListItem>
                                             <Typography>{product.countInStock > 0 ? 'Ainda há bilhetes disponíveis' : 'Já não há bilhetes disponíveis'}</Typography>
                                         </ListItem>
-                                        <ListItem>
+                                        {/*<ListItem>
                                             <Typography>
                                                 Descrição: {product.description}
                                             </Typography>
-                                        </ListItem>
+                    </ListItem>*/}
                                     </List>
                                 </Grid>
                                 <Grid item md={3} xs={12}>
