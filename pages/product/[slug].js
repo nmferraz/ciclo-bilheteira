@@ -121,11 +121,9 @@ export default function ProductScreen(props) {
                       : "Já não há bilhetes disponíveis"}
                   </Typography>
                 </ListItem>
-                {/*<ListItem>
-                                            <Typography>
-                                                Descrição: {product.description}
-                                            </Typography>
-                    </ListItem>*/}
+                <ListItem>
+                  <Typography>Descrição: {product.description}</Typography>
+                </ListItem>
               </List>
             </Grid>
             <Grid item md={3} xs={12}>
