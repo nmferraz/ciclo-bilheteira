@@ -145,7 +145,7 @@ function CartScreen() {
                                         fullWidth
                                         color="primary"
                                         variant="contained"
-                                    >Finalizar Reserva</Button>
+                                    >Avançar</Button>
                                 </ListItem>
                             </List>
                         </Card>
