@@ -191,7 +191,7 @@ export default function RegisterScreen() {
                     <ListItem>
                         Já tens uma conta?{' '}
                         <NextLink href={`/login?redirect=${redirect || '/'}`} passHref>
-                            <Link>Ótimo, inicia sessão.</Link>
+                            <Link>Já tenho uma conta.</Link>
                         </NextLink>
                     </ListItem>
                 </List>
