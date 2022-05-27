@@ -176,12 +176,14 @@ export default function Layout({ title, description, children }) {
                     open={Boolean(anchorEl)}
                     onClose={loginMenuCloseHandler}
                   >
+                    <MenuItem onClick={() => router.back()}>
+                      Fechar menu
+                    </MenuItem>
                     <MenuItem
                       onClick={(e) => loginMenuCloseHandler(e, "/profile")}
                     >
-                      Fechar menu
+                      Perfil
                     </MenuItem>
-                    <MenuItem onClick={() => router.back()}>Perfil</MenuItem>
                     <MenuItem
                       onClick={(e) =>
                         loginMenuCloseHandler(e, "/order-history")
