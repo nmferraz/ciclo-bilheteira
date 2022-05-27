@@ -104,7 +104,11 @@ export default function Layout({ title, description, children }) {
         <title>
           {title ? `${title} - CICLO | Bilheteira` : "CICLO | Bilheteira"}
         </title>
-        {description && <meta name="description" content={description}></meta>}
+        {(description && (
+          <meta name="description" content={description}></meta>
+        )) || (
+          <meta name="description" content="Bilheteira oficial do CICLO"></meta>
+        )}
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
