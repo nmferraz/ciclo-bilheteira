@@ -109,6 +109,7 @@ export default function Layout({ title, description, children }) {
         )) || (
           <meta name="description" content="Bilheteira oficial do CICLO"></meta>
         )}
+        <meta name="google-site-verification" content="588xqUmMvxb2KK3E3JRaz5cxCULZz_Tfwu_riw0l1O0" />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
