@@ -80,7 +80,7 @@ export default function RegisterScreen() {
                                     variant="outlined"
                                     fullWidth
                                     id="name"
-                                    label="Nome"
+                                    label="Nome e Apelido"
                                     inputProps={{ type: 'name' }}
                                     error={Boolean(errors.name)}
                                     helperText={
